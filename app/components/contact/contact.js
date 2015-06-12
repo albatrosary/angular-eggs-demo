@@ -7,7 +7,8 @@
 (function () {
   'use strict';
 
-  angular.module('demo.contact', [])
+  angular
+    .module('demo.contact', [])
     .controller('ContactController', ContactController);
 
   ContactController.$inject = [];

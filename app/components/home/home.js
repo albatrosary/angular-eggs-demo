@@ -7,7 +7,8 @@
 (function () {
   'use strict';
 
-  angular.module('demo.home', [])
+  angular
+    .module('demo.home', [])
     .controller('HomeController', HomeController);
 
   HomeController.$inject = [];

@@ -14,19 +14,20 @@
 
   AppConfig.$inject = ['$locationProvider'];
 
-  angular.module('demo', [
-    'ngNewRouter',
-    'demo.home',
-    'demo.about',
-    'demo.contact',
-    'demo.todos',
-    'demo.todo',
-    'demo.directive.message',
-    'demo.service.tasks',
-    'demo.service.gruntfiles'
+  angular
+    .module('demo', [
+      'ngNewRouter',
+      'demo.home',
+      'demo.about',
+      'demo.contact',
+      'demo.todos',
+      'demo.todo',
+      'demo.directive.message',
+      'demo.service.tasks',
+      'demo.service.gruntfiles'
     ])
     .config(AppConfig)
-    .value('todoscount', {
+    .value('DemoValue', {
       tasks: 0,
       about: 0
     })
@@ -41,21 +42,21 @@
     { path: '/todo/:id',   component: 'todo' }
   ];
 
-  AppController.$inject = ['todoscount', 'TasksService', 'GruntfilesService', '$rootScope', '$q'];
+  AppController.$inject = ['DemoValue', 'TasksService', 'GruntfilesService', '$rootScope'];
 
-  function AppController(todoscount, TasksService, GruntfilesService, $rootScope, $q) {
+  function AppController(DemoValue, TasksService, GruntfilesService, $rootScope) {
     console.log('AppController Constructor');
 
     var _self = this;
 
     $rootScope.$watch(function(){
-      return todoscount.tasks;
+      return DemoValue.tasks;
     }, function(value) {
       _self.todos = value;
     });
 
     $rootScope.$watch(function(){
-      return todoscount.about;
+      return DemoValue.about;
     }, function(value){
       _self.about = value;
     });
@@ -64,11 +65,11 @@
     var grunt = GruntfilesService.query().$promise;
 
     tasks.then (function(todos){
-      todoscount.tasks = todos.length;
+      DemoValue.tasks = todos.length;
     });
 
     grunt.then (function(about){
-      todoscount.about = about.length;
+      DemoValue.about = about.length;
     });
   }
 

@@ -7,6 +7,7 @@
     .factory('TasksService', TasksService);
 
   TasksService.$inject = ['$resource'];
+  
   /**
    * 
    * @class TasksService

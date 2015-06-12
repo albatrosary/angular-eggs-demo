@@ -7,10 +7,11 @@
 (function () {
   'use strict';
 
-  angular.module('demo.todo', [])
+  angular
+    .module('demo.todo', [])
     .controller('TodoController', TodoController);
 
-  TodoController.$inject = ['$routeParams', '$location', 'TasksService', 'todoscount'];
+  TodoController.$inject = ['$routeParams', '$location', 'TasksService', 'DemoValue'];
 
   /**
    * AboutController
@@ -18,10 +19,10 @@
    * @class AboutController
    * @constructor
    */
-  function TodoController($routeParams, $location, TasksService, todoscount) {
+  function TodoController($routeParams, $location, TasksService, DemoValue) {
   	console.log('TodoController Constructor');
     this.TasksService = TasksService;
-    this.todoscount = todoscount;
+    this.DemoValue = DemoValue;
     this.id = $routeParams.id;
     this.$location = $location;
   }
@@ -112,11 +113,11 @@
   };
 
   var tasks = function () {
-    var query = tasks.vm.TasksService.query().$promise;
+    var query = vm.TasksService.query().$promise;
     query.then (taskscount);
   };
 
   var taskscount = function (data) {
-    vm.todoscount.tasks = data.length;
+    vm.DemoValue.tasks = data.length;
   };
 })();

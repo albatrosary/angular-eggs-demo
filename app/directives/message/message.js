@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  angular.module('demo.directive.message',[])
+  angular
+    .module('demo.directive.message',[])
     .directive('demoMessage', messageDirective);
 
   messageDirective.$inject = [];

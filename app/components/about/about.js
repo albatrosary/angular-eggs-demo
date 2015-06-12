@@ -7,7 +7,8 @@
 (function () {
   'use strict';
 
-  angular.module('demo.about', [])
+  angular
+    .module('demo.about', [])
     .controller('AboutController', AboutController);
 
   AboutController.$inject = ['GruntfilesService'];

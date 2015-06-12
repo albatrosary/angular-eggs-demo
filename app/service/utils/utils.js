@@ -8,17 +8,21 @@
    */
   function UtilsService(){
     
-    var someProperty={};
-
+    
     var utilsService = {
       someMethod: function () {
         return;
       }
     };
+    
+    var someProperty={};
+
+
     return utilsService;
   }
 
-  angular.module('demo.service.utils',[])
+  angular
+    .module('demo.service.utils',[])
     .factory('UtilsService', UtilsService);
 
   UtilsService.$inject = [];
