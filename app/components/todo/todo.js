@@ -27,6 +27,10 @@
   }
 
   /**
+   * Public method, assigned to prototype
+   */
+
+  /**
   * My method description.  Like other pieces of your comment blocks, 
   * this can span multiple lines.
   *
@@ -34,6 +38,8 @@
   */
   TodoController.prototype.activate = function() {
   	console.log('TodoController activate Method');
+
+    vm = this;
 
     if (!this.id) {
       return ;
@@ -44,14 +50,10 @@
       .then(listing)
       .catch(messaging);
 
-    listing.vm = this;
-    messaging.vm = this;
   };
 
   TodoController.prototype.back = function() {
     console.log('back');
-
-    redirect.vm = this;
     redirect();
   }; 
 
@@ -65,7 +67,6 @@
 
     var save = this.TasksService.save(data).$promise;
     save.then(tasks);
-    tasks.vm = this;
   }; 
 
   TodoController.prototype.update = function () {
@@ -86,29 +87,36 @@
 
     var tasks = this.TasksService.delete({id: this.id}).$promise;
     tasks.then(redirect);
-    redirect.vm = this;
   };
 
-  /** private method */
-  function listing(todo) {
-    listing.vm.todo = todo;
-  }
+
+  /**
+   * Private property
+   */
+  var vm; 
+
+  /**
+   * Private function
+   */
+
+  var listing = function(todo) {
+    vm.todo = todo;
+  };
   
-  function messaging(e) {
-    messaging.vm.message = e.statusText;
-  }
+  var messaging = function(e) {
+    vm.message = e.statusText;
+  };
 
-  function redirect() {
-    redirect.vm.$location.path('/todos');
-  }
+  var redirect = function () {
+    vm.$location.path('/todos');
+  };
 
-  function tasks() {
+  var tasks = function () {
     var query = tasks.vm.TasksService.query().$promise;
     query.then (taskscount);
-    taskscount.vm = tasks.vm;
-  }
+  };
 
-  function taskscount(data) {
-    taskscount.vm.todoscount.tasks = data.length;
-  }
+  var taskscount = function (data) {
+    vm.todoscount.tasks = data.length;
+  };
 })();

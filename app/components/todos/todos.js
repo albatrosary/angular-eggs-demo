@@ -18,11 +18,13 @@
    * @constructor
    */
   function TodosController(TasksService, todoscount) {
-  	var vm = this;
-
-    vm.TasksService = TasksService;
-    vm.todoscount = todoscount;
+    this.TasksService = TasksService;
+    this.todoscount = todoscount;
   }
+
+  /**
+   * Public method, assigned to prototype
+   */
 
   /**
   * My method description.  Like other pieces of your comment blocks, 
@@ -31,23 +33,32 @@
   * @method activate
   */
   TodosController.prototype.activate = function() {
+    vm = this;
     var tasks = this.TasksService.query().$promise;
     tasks.then (display);
-    display.vm = this;
   };
 
   TodosController.prototype.remove = function() {
     var tasks = this.TasksService.remove().$promise;
     tasks.then (taskscount);
-    taskscount.vm = this;
   };
 
-  function display(todos) {
-    display.vm.todos = todos;
-    display.vm.todoscount.tasks = todos.length;
-  }
+  /**
+   * Private Property
+   */
+   
+   var vm;
 
-  function taskscount(){
-    taskscount.vm.todoscount.tasks = 0;
-  }
+  /**
+   * Private Method
+   */
+
+  var display = function(todos) {
+    vm.todos = todos;
+    vm.todoscount.tasks = todos.length;
+  };
+
+  var taskscount = function () {
+    vm.todoscount.tasks = 0;
+  };
 })();

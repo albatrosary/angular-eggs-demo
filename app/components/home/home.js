@@ -21,4 +21,16 @@
   function HomeController() {
   	console.log('HomeController Constructor');
   }
+
+  /**
+   * Public method, assigned to prototype
+   */
+
+  /**
+   * Private property
+   */
+   
+  /**
+   * Private function
+   */
 })();

@@ -1,18 +1,17 @@
 (function () {
   'use strict';
+
+  angular.module('demo.directive.message',[])
+    .directive('demoMessage', messageDirective);
+
+  messageDirective.$inject = [];
+
   /**
    * 
    * @class messageDirective
    * @constructor
    */
   function messageDirective(){
-    function messageLink(scope, element, attrs){
-
-      /*
-        some method
-      */
-      
-    }
 
     return {
       restrict: 'AE',
@@ -20,13 +19,7 @@
       templateUrl: 'directives/message/message.html',
       scope: {
         text: '='
-      },
-      link: messageLink
+      }
     };
   }
-
-  angular.module('demo.directive.message',[])
-    .directive('demoMessage', messageDirective);
-
-  messageDirective.$inject = [];
 })();

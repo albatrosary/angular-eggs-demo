@@ -13,12 +13,8 @@
    * @constructor
    */
   function TasksService($resource){
-
-    var ret = function (data) {
-      return angular.fromJson(data);
-    };
     
-    return $resource('/api/tasks/:id', 
+    var tasksService = $resource('/api/tasks/:id', 
       /**
        default method
        {
@@ -48,6 +44,12 @@
         }
       }
     );
+
+    var ret = function (data) {
+      return angular.fromJson(data);
+    };
+
+    return tasksService;
   }
 })();
 
