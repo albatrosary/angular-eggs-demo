@@ -19,31 +19,47 @@
 
   function AppController(DemoValue, TasksService, GruntfilesService, $rootScope) {
     console.log('AppController Constructor');
+    vm = this;
+    vm.DemoValue = DemoValue;
+    vm.TasksService = TasksService;
+    vm.GruntfilesService = GruntfilesService;
+    vm.$rootScope = $rootScope;
 
-    var _self = this;
+    $rootScope.$watch(tasksValue, tasksSet);
 
-    $rootScope.$watch(function(){
-      return DemoValue.tasks;
-    }, function(value) {
-      _self.todos = value;
-    });
+    $rootScope.$watch(aboutValue, aboutSet);
 
-    $rootScope.$watch(function(){
-      return DemoValue.about;
-    }, function(value){
-      _self.about = value;
-    });
+    var tasks = vm.TasksService.query().$promise;
+    var grunt = vm.GruntfilesService.query().$promise;
 
-    var tasks = TasksService.query().$promise;
-    var grunt = GruntfilesService.query().$promise;
-
-    tasks.then (function(todos){
-      DemoValue.tasks = todos.length;
-    });
-
-    grunt.then (function(about){
-      DemoValue.about = about.length;
-    });
+    tasks.then (todosCount);
+    grunt.then (aboutCount);
   }
+
+  var vm;
+
+  var tasksSet = function(value) {
+    vm.todos = value;
+  };
+
+  var aboutSet = function(value){
+    vm.about = value;
+  };
+
+  var tasksValue = function(){
+    return vm.DemoValue.tasks;
+  };
+
+  var aboutValue = function(){
+    return vm.DemoValue.about;
+  };
+
+  var todosCount = function(todos){
+    vm.DemoValue.tasks = todos.length;
+  };
+
+  var aboutCount = function(about) {
+    vm.DemoValue.about = about.length;
+  };
 
 })();

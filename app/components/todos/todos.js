@@ -60,6 +60,7 @@
   };
 
   var taskscount = function () {
+    vm.todos = [];
     vm.DemoValue.tasks = 0;
   };
 })();
