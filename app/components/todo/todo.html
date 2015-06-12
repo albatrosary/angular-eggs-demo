@@ -6,9 +6,8 @@
 </div>
 
 <div class="btn-group form-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default" ng-click="todo.back()">戻る</button>
-  <button type="button" class="btn btn-default" ng-click="todo.add()">追加</button>
-  <button type="button" class="btn btn-default" ng-click="todo.update()">更新</button>
-  <button type="button" class="btn btn-default" ng-click="todo.delete()">削除</button>
-  <button type="button" class="btn btn-default" ng-click="todo.countup()">UP</button>
+  <button class="btn btn-default" ng-click="todo.back()">戻る</button>
+  <button class="btn btn-default" ng-click="todo.add()">追加</button>
+  <button class="btn btn-default" ng-click="todo.update()" ng-show="todo.id">更新</button>
+  <button class="btn btn-default" ng-click="todo.delete()" ng-show="todo.id">削除</button>
 </div>

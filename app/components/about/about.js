@@ -7,6 +7,11 @@
 (function () {
   'use strict';
 
+  angular.module('demo.about', [])
+    .controller('AboutController', AboutController);
+
+  AboutController.$inject = ['GruntfilesService'];
+
   /**
    * AboutController
    *
@@ -14,9 +19,6 @@
    * @constructor
    */
   function AboutController(GruntfilesService) {
-    
-    console.log('AboutController Constructor');
-  
     this.GruntfilesService = GruntfilesService;
   }
 
@@ -33,21 +35,13 @@
   * @return {Boolean} Returns true on success
   */
   AboutController.prototype.activate = function() {
-    
-    var _self = this;
-
-    return this.GruntfilesService.query().$promise.then(
-      function(list){
-      _self.list = list;
-    }).catch(function(e){
-      console.log(e);
-    });
+    //var vm = this;
+    var grunt = this.GruntfilesService.query().$promise;
+    grunt.then(getlist);
+    getlist.vm = this;
   };
 
-  angular.module('demo.about', [
-    'demo.service.gruntfiles'
-  ])
-    .controller('AboutController', AboutController);
-
-  AboutController.$inject = ['GruntfilesService'];
+  function getlist(list) {
+    getlist.vm.list = list;
+  }
 })();

@@ -7,18 +7,23 @@
 (function () {
   'use strict';
 
+  angular.module('demo.todo', [])
+    .controller('TodoController', TodoController);
+
+  TodoController.$inject = ['$routeParams', '$location', 'TasksService', 'TodoscountService'];
+
   /**
    * AboutController
    *
    * @class AboutController
    * @constructor
    */
-  function TodoController($routeParams, $location, TasksService) {
+  function TodoController($routeParams, $location, TasksService, TodoscountService) {
   	console.log('TodoController Constructor');
     this.TasksService = TasksService;
+    this.TodoscountService = TodoscountService;
     this.id = $routeParams.id;
     this.$location = $location;
-    this.message = undefined;
   }
 
   /**
@@ -30,94 +35,80 @@
   TodoController.prototype.activate = function() {
   	console.log('TodoController activate Method');
 
-    var _self = this;
-
-    if (!_self.id) {
+    if (!this.id) {
       return ;
     }
 
-    return this.TasksService.get({id: _self.id}).$promise.then (
-      function(todo){
-        _self.todo = todo;
-      }
-    ).catch (function (e) {
-        _self.message = e.statusText;
-      }
-    );
+    var tasks = this.TasksService.get({id: this.id}).$promise;
+    tasks
+      .then(listing)
+      .catch(messaging);
+
+    listing.vm = this;
+    messaging.vm = this;
   };
 
   TodoController.prototype.back = function() {
     console.log('back');
-    this.$location.path('/todos');
+
+    redirect.vm = this;
+    redirect();
   }; 
 
   TodoController.prototype.add = function() {
     console.log('add');
-    
-    var _self = this;
 
     var data = angular.fromJson({
       'title': this.todo.title,
       'desc':  this.todo.desc
     });
-    this.TasksService.save(data).$promise.then (
-        function () {
-          console.log('aaaa');
-          _self.$location.path('/todos');
-        }
-      ).catch (
-        function (e) {
-          _self.message = e.statusText;
-        }
-    );
+
+    var save = this.TasksService.save(data).$promise;
+    save.then(tasks);
+    tasks.vm = this;
   }; 
 
   TodoController.prototype.update = function () {
     console.log('update');
 
-    var _self = this;
-
     var data = angular.fromJson({
-      'id': this.id,
+      'id':    this.id,
       'title': this.todo.title,
-      'desc': this.todo.desc
+      'desc':  this.todo.desc
     });
-    this.TasksService.update(data).$promise.catch (
-      function (e) {
-        _self.message = e.status + ': ' + e.statusText;
-      }
-    );
+    
+    var update = this.TasksService.update(data).$promise;
+    update.then();
   }; 
 
   TodoController.prototype.delete = function() {
     console.log('delete');
 
-    var _self = this;
-
-    this.TasksService.delete({id: this.id}).$promise.catch (
-      function (e) {
-        console.log(e);
-      }
-    );
-
-    this.$location.path('/todos');
+    var tasks = this.TasksService.delete({id: this.id}).$promise;
+    tasks.then(redirect);
+    redirect.vm = this;
   };
 
-  TodoController.prototype.remove = function() {
-    console.log('delete');
+  /** private method */
+  function listing(todo) {
+    listing.vm.todo = todo;
+  }
+  
+  function messaging(e) {
+    messaging.vm.message = e.statusText;
+  }
 
-    var _self = this;
+  function redirect() {
+    redirect.vm.$location.path('/todos');
+  }
 
-    this.TasksService.remove().$promise.catch (
-      function (e) {
-        console.log(e);
-      }
-    );
-    this.$location.path('/todos');
-  }; 
+  function tasks() {
+    var query = tasks.vm.TasksService.query().$promise;
+    query.then (taskscount);
+    taskscount.vm = tasks.vm;
+  }
 
-  angular.module('demo.todo', [])
-    .controller('TodoController', TodoController);
-
-  TodoController.$inject = ['$routeParams', '$location', 'TasksService'];
+  function taskscount(data) {
+    taskscount.vm.TodoscountService.tasks = data.length;
+  }
 })();

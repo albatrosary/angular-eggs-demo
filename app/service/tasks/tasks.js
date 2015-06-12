@@ -1,6 +1,12 @@
 (function () {
   'use strict';
   
+  angular.module('demo.service.tasks',[
+    'ngResource'
+  ])
+    .factory('TasksService', TasksService);
+
+  TasksService.$inject = ['$resource'];
   /**
    * 
    * @class TasksService
@@ -8,6 +14,10 @@
    */
   function TasksService($resource){
 
+    var ret = function (data) {
+      return angular.fromJson(data);
+    };
+    
     return $resource('/api/tasks/:id', 
       /**
        default method
@@ -23,14 +33,10 @@
        */
       {
         'get': {
-          transformResponse: function (data) {
-            return angular.fromJson(data);
-          }
+          transformResponse: ret
         },
-        'query':  {
-           transformResponse: function (data) {
-             return angular.fromJson(data);
-           }
+        'query': {
+          transformResponse: ret
         }
       },
       /**
@@ -43,13 +49,6 @@
       }
     );
   }
-
-  angular.module('demo.service.tasks',[
-    'ngResource'
-  ])
-    .factory('TasksService', TasksService);
-
-  TasksService.$inject = ['$resource'];
 })();
 
 

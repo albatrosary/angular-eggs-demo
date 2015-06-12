@@ -46,6 +46,7 @@ module.exports = function(config) {
       'app/service/gruntfiles.js',
       'app/service/tasks/tasks.js',
       'app/service/todoscount/todoscount.js',
+      'app/service/utils/utils.js',
       'test/components/about/about.spec.js',
       'test/components/contact/contact.spec.js',
       'test/components/home/home.spec.js',
@@ -59,6 +60,8 @@ module.exports = function(config) {
       'test/service/tasks/tasks.spec.js',
       'test/service/todoscount/todoscount.mock.js',
       'test/service/todoscount/todoscount.spec.js',
+      'test/service/utils/utils.mock.js',
+      'test/service/utils/utils.spec.js',
       // endinjector
       'app/scripts/main.js',
       'test/main.spec.js'

@@ -7,6 +7,10 @@
 (function () {
   'use strict';
 
+  angular.module('demo.todos', [])
+    .controller('TodosController', TodosController);
+
+  TodosController.$inject = ['TasksService', 'TodoscountService'];
   /**
    * AboutController
    *
@@ -14,9 +18,10 @@
    * @constructor
    */
   function TodosController(TasksService, TodoscountService) {
-  	console.log('TodosController Constructor');
-    this.TasksService = TasksService;
-    this.TodoscountService = TodoscountService;
+  	var vm = this;
+
+    vm.TasksService = TasksService;
+    vm.TodoscountService = TodoscountService;
   }
 
   /**
@@ -26,38 +31,23 @@
   * @method activate
   */
   TodosController.prototype.activate = function() {
-  	console.log('TodosController activate Method');
-
-    var _self = this;
-
-    return this.TasksService.query().$promise.then (
-      function(todos){
-        _self.todos = todos;
-        _self.TodoscountService.tasks = todos.length;
-      }).catch( function(e){ });
-
+    var tasks = this.TasksService.query().$promise;
+    tasks.then (display);
+    display.vm = this;
   };
 
   TodosController.prototype.remove = function() {
-    console.log('TodosController remove Method');
-
-    var _self = this;
-
-    return this.TasksService.remove().$promise.then (
-      function(){
-        _self.todos = '';
-      }).catch( function(e){
-        console.log('error', e.status, e.statusText);
-      });
-
+    var tasks = this.TasksService.remove().$promise;
+    tasks.then (taskscount);
+    taskscount.vm = this;
   };
 
+  function display(todos) {
+    display.vm.todos = todos;
+    display.vm.TodoscountService.tasks = todos.length;
+  }
 
-  angular.module('demo.todos', [
-    'demo.service.tasks',
-    'demo.service.todoscount'
-  ])
-    .controller('TodosController', TodosController);
-
-  TodosController.$inject = ['TasksService', 'TodoscountService'];
+  function taskscount(){
+    taskscount.vm.TodoscountService.tasks = 0;
+  }
 })();

@@ -3,13 +3,13 @@
 <h2>Todos 
   <div class="btn-group pull-right" role="group" aria-label="...">
     <a type="button" class="btn btn-default"      ng-link="todo({id: undefined})">追加</a>
-    <button type="button" class="btn btn-default" ng-click="todos.remove()">削除</button>
+    <button class="btn btn-default" ng-click="todos.remove()">削除</button>
   </div>
 </h2>
 
 <p class="input-group" ng-repeat="todo in todos.todos track by $index">
   <input type="text" ng-model="todo.title" class="form-control">
   <span class="input-group-btn">
-    <a class="btn btn-primary" ng-link="todo({id: $index})" aria-label="Remove">X</a>
+    <a class="btn btn-default" ng-link="todo({id: $index})" aria-label="Remove"><span class="glyphicon glyphicon-edit"></span></a>
   </span>
 </p>
