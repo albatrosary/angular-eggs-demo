@@ -6,7 +6,7 @@
    * @class TodoscountService
    * @constructor
    */
-  function TodoscountService() {
+  function TodoscountServiceaa() {
     
     // Public API here
     return {
@@ -15,10 +15,10 @@
     };
   }
 
-  angular.module('demo.service.todoscount',[
-  ]).factory('TodoscountService', TodoscountService);
+  angular.module('demo.service.todoscountaaaaa',[
+  ]).factory('TodoscountServiceaaaaa', TodoscountServiceaa);
 
-  TodoscountService.$inject = [];
+  TodoscountServiceaa.$inject = [];
 })();
 
 

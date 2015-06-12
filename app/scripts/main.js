@@ -22,11 +22,14 @@
     'demo.todos',
     'demo.todo',
     'demo.directive.message',
-    'demo.service.todoscount',
     'demo.service.tasks',
     'demo.service.gruntfiles'
     ])
     .config(AppConfig)
+    .value('todoscount', {
+      tasks: 0,
+      about: 0
+    })
     .controller('AppController', AppController);
 
   AppController.$routeConfig = [
@@ -38,21 +41,21 @@
     { path: '/todo/:id',   component: 'todo' }
   ];
 
-  AppController.$inject = ['TodoscountService', 'TasksService', 'GruntfilesService', '$rootScope', '$q'];
+  AppController.$inject = ['todoscount', 'TasksService', 'GruntfilesService', '$rootScope', '$q'];
 
-  function AppController(TodoscountService, TasksService, GruntfilesService, $rootScope, $q) {
+  function AppController(todoscount, TasksService, GruntfilesService, $rootScope, $q) {
     console.log('AppController Constructor');
 
     var _self = this;
 
     $rootScope.$watch(function(){
-      return TodoscountService.tasks;
+      return todoscount.tasks;
     }, function(value) {
       _self.todos = value;
     });
 
     $rootScope.$watch(function(){
-      return TodoscountService.about;
+      return todoscount.about;
     }, function(value){
       _self.about = value;
     });
@@ -61,11 +64,11 @@
     var grunt = GruntfilesService.query().$promise;
 
     tasks.then (function(todos){
-      TodoscountService.tasks = todos.length;
+      todoscount.tasks = todos.length;
     });
 
     grunt.then (function(about){
-      TodoscountService.about = about.length;
+      todoscount.about = about.length;
     });
   }
 

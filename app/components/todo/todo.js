@@ -10,7 +10,7 @@
   angular.module('demo.todo', [])
     .controller('TodoController', TodoController);
 
-  TodoController.$inject = ['$routeParams', '$location', 'TasksService', 'TodoscountService'];
+  TodoController.$inject = ['$routeParams', '$location', 'TasksService', 'todoscount'];
 
   /**
    * AboutController
@@ -18,10 +18,10 @@
    * @class AboutController
    * @constructor
    */
-  function TodoController($routeParams, $location, TasksService, TodoscountService) {
+  function TodoController($routeParams, $location, TasksService, todoscount) {
   	console.log('TodoController Constructor');
     this.TasksService = TasksService;
-    this.TodoscountService = TodoscountService;
+    this.todoscount = todoscount;
     this.id = $routeParams.id;
     this.$location = $location;
   }
@@ -109,6 +109,6 @@
   }
 
   function taskscount(data) {
-    taskscount.vm.TodoscountService.tasks = data.length;
+    taskscount.vm.todoscount.tasks = data.length;
   }
 })();

@@ -10,18 +10,18 @@
   angular.module('demo.todos', [])
     .controller('TodosController', TodosController);
 
-  TodosController.$inject = ['TasksService', 'TodoscountService'];
+  TodosController.$inject = ['TasksService', 'todoscount'];
   /**
    * AboutController
    *
    * @class AboutController
    * @constructor
    */
-  function TodosController(TasksService, TodoscountService) {
+  function TodosController(TasksService, todoscount) {
   	var vm = this;
 
     vm.TasksService = TasksService;
-    vm.TodoscountService = TodoscountService;
+    vm.todoscount = todoscount;
   }
 
   /**
@@ -44,10 +44,10 @@
 
   function display(todos) {
     display.vm.todos = todos;
-    display.vm.TodoscountService.tasks = todos.length;
+    display.vm.todoscount.tasks = todos.length;
   }
 
   function taskscount(){
-    taskscount.vm.TodoscountService.tasks = 0;
+    taskscount.vm.todoscount.tasks = 0;
   }
 })();
