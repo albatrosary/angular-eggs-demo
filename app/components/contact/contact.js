@@ -26,14 +26,11 @@
   /**
    * Public method, assigned to prototype
    */
-
-  /**
-   * Private property
-   */
-   
-  /**
-   * Private function
-   */
+  ContactController.prototype.activate = function () {
+    vm = this;
+    vm.case1 = 20;
+    someMethod();
+  };
 
   /**
    * Static property
@@ -42,4 +39,17 @@
   /**
    * Static method, assigned to class
    */
+
+  /**
+   * Private property
+   */
+   
+   var vm;
+
+  /**
+   * Private Method
+   */
+   var someMethod = function () {
+     vm.case2 = 10;
+   };
 })();

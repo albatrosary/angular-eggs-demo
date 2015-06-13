@@ -34,10 +34,14 @@
   * @method activate
   */
   AboutController.prototype.activate = function() {
-    //var vm = this;
+    console.log('AboutController Method activate');
+    var vm = this;
     var grunt = this.GruntfilesService.query().$promise;
-    grunt.then(getlist);
-    vm = this;
+    grunt.then(function (list) {
+      console.log(list);
+      vm.list = list;
+    });
+    //vm = this;
   };
 
   /**

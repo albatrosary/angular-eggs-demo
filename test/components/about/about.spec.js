@@ -12,8 +12,10 @@
     }));
 
     describe('AboutController',function(){
-      it('Test Case', function () {
-
+      it('Get Grunt List', function () {
+        //AboutController.activate();
+        //console.log(AboutController.list);
+        //expect(AboutController.list).toBe(true);
       });
     });
   });
