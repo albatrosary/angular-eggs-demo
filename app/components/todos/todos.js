@@ -12,6 +12,7 @@
     .controller('TodosController', TodosController);
 
   TodosController.$inject = ['TasksService', 'DemoValue'];
+
   /**
    * AboutController
    *
@@ -36,7 +37,8 @@
   TodosController.prototype.activate = function() {
     vm = this;
     var tasks = this.TasksService.query().$promise;
-    tasks.then (display);
+    tasks
+      .then (display);
   };
 
   TodosController.prototype.remove = function() {

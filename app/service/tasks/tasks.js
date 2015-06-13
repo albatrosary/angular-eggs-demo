@@ -7,7 +7,7 @@
     .factory('TasksService', TasksService);
 
   TasksService.$inject = ['$resource'];
-  
+
   /**
    * 
    * @class TasksService
@@ -30,10 +30,16 @@
        */
       {
         'get': {
-          transformResponse: ret
+          transformResponse: function (data) {
+            console.log('aaaaa');
+            return angular.fromJson(data);
+          }
         },
         'query': {
-          transformResponse: ret
+          transformResponse:  function (data) {
+            console.log('aaaaa');
+            return angular.fromJson(data);
+          }
         }
       },
       /**
@@ -45,10 +51,6 @@
         }
       }
     );
-
-    var ret = function (data) {
-      return angular.fromJson(data);
-    };
 
     return tasksService;
   }

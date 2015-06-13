@@ -80,14 +80,17 @@
     });
     
     var update = this.TasksService.update(data).$promise;
-    update.then();
+    update
+      .then()
+      .catch(messaging);
   }; 
 
   TodoController.prototype.delete = function() {
     console.log('delete');
 
     var tasks = this.TasksService.delete({id: this.id}).$promise;
-    tasks.then(redirect);
+    tasks
+      .then(redirect);
   };
 
 
@@ -97,7 +100,7 @@
   var vm; 
 
   /**
-   * Private function
+   * Private Method
    */
 
   var listing = function(todo) {
@@ -105,7 +108,7 @@
   };
   
   var messaging = function(e) {
-    vm.message = e.statusText;
+    vm.message = 'error:' + e.statusText;
   };
 
   var redirect = function () {
