@@ -1,29 +1,49 @@
 (function(){
   'use strict';
 
-  function GruntfilesService(){
-    
-    var mockData = {
-          $valid: true
-        };
+  var json = [
+    {
+      'name': 'connect-history-api-fallback',
+      'version': '^1.1.0',
+      'desc': 'Provides a fallback for non-existing directories so that the HTML 5 history API can be used.'
+    },
+    {
+      'name': 'grunt',
+      'version': '^0.4.5',
+      'desc': 'The JavaScript Task Runner'
+    },
+    {
+      'name': 'grunt-autoprefixer',
+      'version': '^3.0.1',
+      'desc': 'Parse CSS and add vendor-prefixed CSS properties using the Can I Use database. Based on Autoprefixer.'
+    }
+  ];
 
-    var someSpy = jasmine.createSpy().and.returnValue({
-      then:function(cb){
-        cb(mockData);
-        return {
-          catch: function () {
-            /* Default Case Not Exeption; */
-          }
-        };
+  angular
+    .module('demo.mock.service.gruntfiles', [])
+    .factory('GruntfilesService', GruntfilesService);
+
+  GruntfilesService.$inject = [];
+
+  function GruntfilesService() {
+
+    var querySpy = jasmine.createSpy().and.returnValue({
+      $promise: {
+        then: function(cb){
+          
+          cb(json);
+
+          return {
+            catch:function(ccb){
+              ccb();
+            }
+          };
+        }
       }
     });
 
     return {
-      some: someSpy,
-      mockData: mockData
+      query: querySpy
     };
   }
-
-  angular.module('demo.mock.service.gruntfiles',[])
-    .factory('GruntfilesService', GruntfilesService);
 })();

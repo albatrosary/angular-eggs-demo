@@ -3,7 +3,8 @@
 
   describe('Controller: AboutController', function () {
 
-    beforeEach(module('demo'));
+    beforeEach(module('demo.about'));
+    beforeEach(module('demo.mock.service.gruntfiles'));
 
     var AboutController;
 
@@ -13,9 +14,8 @@
 
     describe('AboutController',function(){
       it('Get Grunt List', function () {
-        //AboutController.activate();
-        //console.log(AboutController.list);
-        //expect(AboutController.list).toBe(true);
+        AboutController.activate();
+        expect(AboutController.list[0].name).toEqual('connect-history-api-fallback');
       });
     });
   });

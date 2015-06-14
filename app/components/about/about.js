@@ -35,13 +35,10 @@
   */
   AboutController.prototype.activate = function() {
     console.log('AboutController Method activate');
-    var vm = this;
+    
+    vm = this;
     var grunt = this.GruntfilesService.query().$promise;
-    grunt.then(function (list) {
-      console.log(list);
-      vm.list = list;
-    });
-    //vm = this;
+    grunt.then(getlist);
   };
 
   /**
@@ -53,6 +50,7 @@
    * Private function
    */
   var getlist = function (list) {
+    console.log('aaaaaaaaaaa');
     vm.list = list;
   };
 })();

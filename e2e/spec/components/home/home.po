@@ -1,0 +1,32 @@
+'use strict';
+
+/**
+ * 書籍詳細画面コンポーネント
+ * @classdesc 送付先情報画面の制御を行う
+ * @constructor
+ */
+var poHome = function() {
+  this.btnAddBook = element(by.css('a[ng-link="about"]'));
+
+
+  /**
+   * ユースケース(商品の追加)
+   * 指定行の商品を追加する。
+   *
+   * @param  {Number}   bookRowNo  - 追加するカートの列番号
+   * @return {Promise}cart-handlingcart-handling
+   */
+  this.addCart = function(){
+    var cartBtn = po.home.btnAddBook;
+    return browser.wait(function(){
+    	console.log('bbbbbbbbbbbbbb');
+      return ;
+    }, 1000, 'about add cart').then(function(){
+    	console.log('aaaaaaaaaaaaaaaaaa');
+      return ;
+    });
+  };
+
+};
+
+module.exports = new poHome();
