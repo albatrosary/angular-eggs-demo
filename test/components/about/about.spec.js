@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   describe('Controller: AboutController', function () {
@@ -12,7 +12,7 @@
       AboutController = $controller('AboutController');
     }));
 
-    describe('AboutController',function(){
+    describe('AboutController', function() {
       it('Get Grunt List', function () {
         AboutController.activate();
         expect(AboutController.list[0].name).toEqual('connect-history-api-fallback');

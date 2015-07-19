@@ -2,17 +2,17 @@
   'use strict';
 
   angular
-    .module('demo.directive.message',[])
+    .module('demo.directive.message', [])
     .directive('demoMessage', messageDirective);
 
   messageDirective.$inject = [];
 
   /**
-   * 
+   *
    * @class messageDirective
    * @constructor
    */
-  function messageDirective(){
+  function messageDirective() {
 
     return {
       restrict: 'AE',

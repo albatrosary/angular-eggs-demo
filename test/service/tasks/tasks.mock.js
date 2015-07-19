@@ -1,14 +1,17 @@
-(function(){
+(function() {
   'use strict';
 
-  function TasksService(){
-    
+  angular.module('demo.mock.service.tasks', [])
+    .factory('TasksService', TasksService);
+
+  function TasksService() {
+
     var mockData = {
-          $valid: true
-        };
+      $valid: true
+    };
 
     var someSpy = jasmine.createSpy().and.returnValue({
-      then:function(cb){
+      then:function(cb) {
         cb(mockData);
         return {
           catch: function () {
@@ -24,6 +27,4 @@
     };
   }
 
-  angular.module('demo.mock.service.tasks',[])
-    .factory('TasksService', TasksService);
 })();

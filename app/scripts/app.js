@@ -1,4 +1,3 @@
-// jshint devel:true
 (function () {
   'use strict';
 
@@ -7,12 +6,12 @@
     .controller('AppController', AppController);
 
   AppController.$routeConfig = [
-    { path: '/',          redirectTo: '/home' },
-    { path: '/home',       component: 'home' },
-    { path: '/about',      component: 'about' },
-    { path: '/contact',    component: 'contact' },
-    { path: '/todos',      component: 'todos' },
-    { path: '/todo/:id',   component: 'todo' }
+    {path: '/',          redirectTo: '/home'},
+    {path: '/home',       component: 'home'},
+    {path: '/about',      component: 'about'},
+    {path: '/contact',    component: 'contact'},
+    {path: '/todos',      component: 'todos'},
+    {path: '/todo/:id',   component: 'todo'}
   ];
 
   AppController.$inject = ['DemoValue', 'TasksService', 'GruntfilesService', '$rootScope'];
@@ -32,8 +31,10 @@
     var tasks = vm.TasksService.query().$promise;
     var grunt = vm.GruntfilesService.query().$promise;
 
-    tasks.then (todosCount);
-    grunt.then (aboutCount);
+    tasks
+      .then(todosCount);
+    grunt
+      .then(aboutCount);
   }
 
   var vm;
@@ -42,19 +43,19 @@
     vm.todos = value;
   };
 
-  var aboutSet = function(value){
+  var aboutSet = function(value) {
     vm.about = value;
   };
 
-  var tasksValue = function(){
+  var tasksValue = function() {
     return vm.DemoValue.tasks;
   };
 
-  var aboutValue = function(){
+  var aboutValue = function() {
     return vm.DemoValue.about;
   };
 
-  var todosCount = function(todos){
+  var todosCount = function(todos) {
     vm.DemoValue.tasks = todos.length;
   };
 

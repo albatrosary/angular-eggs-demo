@@ -1,7 +1,7 @@
 /**
- * 
  *
- * @deprecated 
+ *
+ * @deprecated
  * @module components/home
  */
 (function () {
@@ -20,7 +20,7 @@
    * @constructor
    */
   function HomeController() {
-  	console.log('HomeController Constructor');
+    console.log('HomeController Constructor');
   }
 
   /**
@@ -30,7 +30,7 @@
   /**
    * Private property
    */
-   
+
   /**
    * Private function
    */

@@ -1,7 +1,7 @@
 /**
- * 
  *
- * @deprecated 
+ *
+ * @deprecated
  * @module components/contact
  */
 (function () {
@@ -20,7 +20,7 @@
    * @constructor
    */
   function ContactController() {
-  	console.log('ContactController Constructor');
+    console.log('ContactController Constructor');
   }
 
   /**
@@ -43,13 +43,13 @@
   /**
    * Private property
    */
-   
-   var vm;
+
+  var vm;
 
   /**
    * Private Method
    */
-   var someMethod = function () {
-     vm.case2 = 10;
-   };
+  var someMethod = function () {
+    vm.case2 = 10;
+  };
 })();

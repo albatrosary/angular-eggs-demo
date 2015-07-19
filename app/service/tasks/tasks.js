@@ -1,21 +1,22 @@
 (function () {
   'use strict';
-  
-  angular.module('demo.service.tasks',[
-    'ngResource'
-  ])
+
+  angular
+    .module('demo.service.tasks', [
+      'ngResource'
+    ])
     .factory('TasksService', TasksService);
 
   TasksService.$inject = ['$resource'];
 
   /**
-   * 
+   *
    * @class TasksService
    * @constructor
    */
-  function TasksService($resource){
-    
-    var tasksService = $resource('/api/tasks/:id', 
+  function TasksService($resource) {
+
+    var tasksService = $resource('/api/tasks/:id',
       /**
        default method
        {
@@ -31,13 +32,11 @@
       {
         'get': {
           transformResponse: function (data) {
-            console.log('aaaaa');
             return angular.fromJson(data);
           }
         },
         'query': {
-          transformResponse:  function (data) {
-            console.log('aaaaa');
+          transformResponse: function (data) {
             return angular.fromJson(data);
           }
         }
@@ -47,7 +46,7 @@
        */
       {
         'update': {
-          method:'PUT'
+          method: 'PUT'
         }
       }
     );
@@ -55,5 +54,3 @@
     return tasksService;
   }
 })();
-
-

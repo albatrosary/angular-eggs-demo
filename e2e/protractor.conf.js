@@ -21,8 +21,8 @@ exports.config = {
     defaultTimeoutInterval: 30000
   },
   // コンポーネント設定(todo helper)
-  onPrepare : function(){
+  onPrepare : function() {
     browser.driver.manage().window().setSize(1280, 720);
     global.po = require('./pageObject.config');
-  },
+  }
 };

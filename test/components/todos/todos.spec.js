@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   describe('Controller: TodosController', function () {
@@ -11,7 +11,7 @@
       TodosController = $controller('TodosController');
     }));
 
-    describe('TodosController',function(){
+    describe('TodosController', function() {
       it('Test Case', function () {
 
       });

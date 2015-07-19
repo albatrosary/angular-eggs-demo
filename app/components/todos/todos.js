@@ -1,7 +1,7 @@
 /**
- * 
  *
- * @deprecated 
+ *
+ * @deprecated
  * @module components/todos
  */
 (function () {
@@ -29,7 +29,7 @@
    */
 
   /**
-  * My method description.  Like other pieces of your comment blocks, 
+  * My method description.  Like other pieces of your comment blocks,
   * this can span multiple lines.
   *
   * @method activate
@@ -49,13 +49,11 @@
   /**
    * Private Property
    */
-   
-   var vm;
+  var vm;
 
   /**
    * Private Method
    */
-
   var display = function(todos) {
     vm.todos = todos;
     vm.DemoValue.tasks = todos.length;

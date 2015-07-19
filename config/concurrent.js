@@ -1,16 +1,12 @@
-(function(){
+(function() {
   'use strict';
 
   module.exports = {
     server: [
-      
       'sass:server'
     ],
-    test: [
-      
-    ],
+    test: [],
     dist: [
-      
       'sass',
       'imagemin',
       'svgmin'

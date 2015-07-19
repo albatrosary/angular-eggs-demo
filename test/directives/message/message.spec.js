@@ -23,7 +23,7 @@ describe('Directive: messageDirective', function () {
     });
 
     it ('someThing', function () {
-    
+
     });
   });
 });

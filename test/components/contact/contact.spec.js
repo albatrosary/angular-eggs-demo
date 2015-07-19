@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   describe('Controller: ContactController', function () {
@@ -11,7 +11,7 @@
       ContactController = $controller('ContactController');
     }));
 
-    describe('ContactController',function(){
+    describe('ContactController', function() {
       it('Test Case 1', function () {
         ContactController.activate();
         expect(ContactController.case1).toEqual(20);

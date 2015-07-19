@@ -2,7 +2,13 @@
 (function () {
   'use strict';
 
-  function AppConfig($locationProvider){
+  angular
+    .module('demo.config', [])
+    .config(AppConfig);
+
+  AppConfig.$inject = ['$locationProvider'];
+
+  function AppConfig($locationProvider) {
     /*
       # Hashbang Mode
       http://www.example.com/#/aaa/
@@ -11,10 +17,4 @@
     */
     $locationProvider.html5Mode(true);
   }
-
-  AppConfig.$inject = ['$locationProvider'];
-
-  angular
-    .module('demo.config', [])
-    .config(AppConfig);
 })();

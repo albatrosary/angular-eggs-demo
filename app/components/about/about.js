@@ -1,7 +1,7 @@
 /**
- * 
  *
- * @deprecated 
+ *
+ * @deprecated
  * @module components/about
  */
 (function () {
@@ -28,14 +28,14 @@
    */
 
   /**
-  * My method description.  Like other pieces of your comment blocks, 
+  * My method description.  Like other pieces of your comment blocks,
   * this can span multiple lines.
   *
   * @method activate
   */
   AboutController.prototype.activate = function() {
     console.log('AboutController Method activate');
-    
+
     vm = this;
     var grunt = this.GruntfilesService.query().$promise;
     grunt.then(getlist);
@@ -50,7 +50,6 @@
    * Private function
    */
   var getlist = function (list) {
-    console.log('aaaaaaaaaaa');
     vm.list = list;
   };
 })();

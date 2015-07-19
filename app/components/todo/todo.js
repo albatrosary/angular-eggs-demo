@@ -1,7 +1,7 @@
 /**
- * 
  *
- * @deprecated 
+ *
+ * @deprecated
  * @module components/todo
  */
 (function () {
@@ -20,7 +20,7 @@
    * @constructor
    */
   function TodoController($routeParams, $location, TasksService, DemoValue) {
-  	console.log('TodoController Constructor');
+    console.log('TodoController Constructor');
     this.TasksService = TasksService;
     this.DemoValue = DemoValue;
     this.id = $routeParams.id;
@@ -32,13 +32,13 @@
    */
 
   /**
-  * My method description.  Like other pieces of your comment blocks, 
+  * My method description.  Like other pieces of your comment blocks,
   * this can span multiple lines.
   *
   * @method activate
   */
   TodoController.prototype.activate = function() {
-  	console.log('TodoController activate Method');
+    console.log('TodoController activate Method');
 
     vm = this;
 
@@ -50,13 +50,12 @@
     tasks
       .then(listing)
       .catch(messaging);
-
   };
 
   TodoController.prototype.back = function() {
     console.log('back');
     redirect();
-  }; 
+  };
 
   TodoController.prototype.add = function() {
     console.log('add');
@@ -68,7 +67,7 @@
 
     var save = this.TasksService.save(data).$promise;
     save.then(tasks);
-  }; 
+  };
 
   TodoController.prototype.update = function () {
     console.log('update');
@@ -78,12 +77,12 @@
       'title': this.todo.title,
       'desc':  this.todo.desc
     });
-    
+
     var update = this.TasksService.update(data).$promise;
     update
       .then()
       .catch(messaging);
-  }; 
+  };
 
   TodoController.prototype.delete = function() {
     console.log('delete');
@@ -93,11 +92,10 @@
       .then(redirect);
   };
 
-
   /**
    * Private property
    */
-  var vm; 
+  var vm;
 
   /**
    * Private Method
@@ -106,7 +104,7 @@
   var listing = function(todo) {
     vm.todo = todo;
   };
-  
+
   var messaging = function(e) {
     vm.message = 'error:' + e.statusText;
   };

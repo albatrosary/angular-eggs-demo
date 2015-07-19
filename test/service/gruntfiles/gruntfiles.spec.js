@@ -12,8 +12,8 @@
       $rootScope = _$rootScope_;
     }));
 
-    describe('someThing',function(){
-      it('someThing',function(){
+    describe('someThing', function() {
+      it('someThing', function() {
 
       });
     });
