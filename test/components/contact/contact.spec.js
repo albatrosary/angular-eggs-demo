@@ -3,7 +3,7 @@
 
   describe('Controller: ContactController', function () {
 
-    beforeEach(module('demo.contact'));
+    beforeEach(module('Sample.components.contact'));
 
     var ContactController;
 
@@ -12,14 +12,8 @@
     }));
 
     describe('ContactController', function() {
-      it('Test Case 1', function () {
+      it('Test Case', function () {
         ContactController.activate();
-        expect(ContactController.case1).toEqual(20);
-      });
-
-      it('Test Case 2', function () {
-        ContactController.activate();
-        expect(ContactController.case2).toEqual(10);
       });
     });
   });

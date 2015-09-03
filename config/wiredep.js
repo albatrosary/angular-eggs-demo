@@ -5,7 +5,7 @@
     app: {
       ignorePath: /^<%= paths.app %>\/|\.\.\//,
       src: ['<%= paths.app %>/index.html'],
-      exclude: ['bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js']
+      exclude: ['bower_components/bootstrap/dist/js/bootstrap.js']
     },
     test: {
       devDependencies: true,

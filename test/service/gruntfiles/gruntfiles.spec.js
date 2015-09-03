@@ -1,13 +1,13 @@
-(function () {
+(function() {
   'use strict';
 
-  describe('Service: GruntfilesService', function () {
+  describe('Service: GruntfilesService', function() {
 
     var GruntfilesService, $rootScope;
 
-    beforeEach(module('demo.service.gruntfiles'));
+    beforeEach(module('Sample.service.gruntfiles'));
 
-    beforeEach(inject(function (_$rootScope_, _GruntfilesService_) {
+    beforeEach(inject(function(_$rootScope_, _GruntfilesService_) {
       GruntfilesService = _GruntfilesService_;
       $rootScope = _$rootScope_;
     }));

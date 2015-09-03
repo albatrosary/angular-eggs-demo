@@ -3,7 +3,7 @@
 
   describe('Controller: HomeController', function () {
 
-    beforeEach(module('demo'));
+    beforeEach(module('Sample.components.home'));
 
     var HomeController;
 
@@ -13,7 +13,7 @@
 
     describe('HomeController', function() {
       it('Test Case', function () {
-
+        HomeController.activate();
       });
     });
   });

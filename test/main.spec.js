@@ -3,7 +3,7 @@
 
   describe('Controller: AppController', function () {
 
-    beforeEach(module('demo'));
+    beforeEach(module('Sample'));
 
     var AppController;
 

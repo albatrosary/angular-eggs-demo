@@ -2,11 +2,10 @@
   "name": "Sample",
   "private": true,
   "dependencies": {
-    "bootstrap-sass-official": "~3.3.5",
-    "modernizr": "~2.8.3",
-    "angular": "~1.4.3",
+    "bootstrap": "~4.0.0-alpha",
+    "angular": "~1.4.5",
     "angular-new-router": "~0.5.3",
-    "angular-resource": "~1.4.3"
+    "angular-resource": "~1.4.5"
   },
   "overrides": {
     "angular-new-router": {
@@ -14,6 +13,6 @@
     }
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.3"
+    "angular-mocks": "~1.4.5"
   }
 }

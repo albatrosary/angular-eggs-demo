@@ -1,14 +1,13 @@
 /**
+ * Contact Components module.
  *
- *
- * @deprecated
- * @module components/contact
+ * @module Sample.components.contact
  */
 (function () {
   'use strict';
 
   angular
-    .module('demo.contact', [])
+    .module('Sample.components.contact', [])
     .controller('ContactController', ContactController);
 
   ContactController.$inject = [];
@@ -24,30 +23,27 @@
   }
 
   /**
-   * Public method, assigned to prototype
+   * The controller activate makes it convenient to re-use the logic
+   * for a refresh for the controller/View, keeps the logic together.
+   *
+   * @method activate
    */
-  ContactController.prototype.activate = function () {
+  ContactController.prototype.activate = function() {
+    console.log('ContactController activate Method');
     vm = this;
     vm.case1 = 20;
     someMethod();
   };
 
   /**
-   * Static property
+   * @property vm
+   * @private
    */
-
-  /**
-   * Static method, assigned to class
-   */
-
-  /**
-   * Private property
-   */
-
   var vm;
 
   /**
-   * Private Method
+   * @method someMethod
+   * @private
    */
   var someMethod = function () {
     vm.case2 = 10;

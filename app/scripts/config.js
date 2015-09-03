@@ -3,10 +3,8 @@
   'use strict';
 
   angular
-    .module('demo.config', [])
+    .module('Sample.config', [])
     .config(AppConfig);
-
-  AppConfig.$inject = ['$locationProvider'];
 
   function AppConfig($locationProvider) {
     /*
@@ -17,4 +15,6 @@
     */
     $locationProvider.html5Mode(true);
   }
+
+  AppConfig.$inject = ['$locationProvider'];
 })();

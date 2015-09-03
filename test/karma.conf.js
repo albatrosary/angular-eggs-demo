@@ -16,9 +16,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
-      'bower_components/modernizr/modernizr.js',
       'bower_components/jquery/dist/jquery.js',
-      'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-new-router/dist/router.es5.js',
       'bower_components/angular-resource/angular-resource.js',
@@ -28,6 +27,7 @@ module.exports = function(config) {
       'app/components/about/about.js',
       'app/components/contact/contact.js',
       'app/components/home/home.js',
+      'app/components/itemlist/itemlist.js',
       'app/components/todo/todo.js',
       'app/components/todos/todos.js',
       'app/directives/message/message.js',
@@ -35,11 +35,13 @@ module.exports = function(config) {
       'app/scripts/config.js',
       'app/scripts/value.js',
       'app/service/gruntfiles.js',
+      'app/service/gruntfiles/gruntfiles.js',
       'app/service/tasks/tasks.js',
       'app/service/utils/utils.js',
       'test/components/about/about.spec.js',
       'test/components/contact/contact.spec.js',
       'test/components/home/home.spec.js',
+      'test/components/itemlist/itemlist.spec.js',
       'test/components/todo/todo.spec.js',
       'test/components/todos/todos.spec.js',
       'test/directives/message/message.spec.js',

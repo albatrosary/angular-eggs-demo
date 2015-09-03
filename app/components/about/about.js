@@ -1,14 +1,15 @@
 /**
+ * About Components module.
  *
- *
- * @deprecated
- * @module components/about
+ * @module Sample.components.about
  */
 (function () {
   'use strict';
 
   angular
-    .module('demo.about', [])
+    .module('Sample.components.about', [
+      'Sample.service.gruntfiles'
+    ])
     .controller('AboutController', AboutController);
 
   AboutController.$inject = ['GruntfilesService'];
@@ -20,36 +21,54 @@
    * @constructor
    */
   function AboutController(GruntfilesService) {
+    console.log('AboutController Constructor');
+
     this.GruntfilesService = GruntfilesService;
   }
 
   /**
-   * Public method, assigned to prototype
+   * The controller activate makes it convenient to re-use the logic
+   * for a refresh for the controller/View, keeps the logic together.
+   *
+   * @method activate
    */
-
-  /**
-  * My method description.  Like other pieces of your comment blocks,
-  * this can span multiple lines.
-  *
-  * @method activate
-  */
   AboutController.prototype.activate = function() {
     console.log('AboutController Method activate');
 
     vm = this;
     var grunt = this.GruntfilesService.query().$promise;
-    grunt.then(getlist);
+    grunt
+      .then(setlist)
+      .catch(error);
   };
 
   /**
-   * Private property
+   * Angular ViewModel
+   *
+   * @property vm
+   * @private
    */
   var vm;
 
   /**
-   * Private function
+   * Setting the retrieved Gruntfile list to ViewModel
+   *
+   * @method setlist
+   * @param {Object} list Gruntfile list
+   * @private
    */
-  var getlist = function (list) {
+  var setlist = function (list) {
     vm.list = list;
+  };
+
+  /**
+   * It will capture the error at the time of Gruntfile data acquisition
+   *
+   * @method error
+   * @param {Object} e error message
+   * @private
+   */
+  var error = function (e) {
+    vm.error = e;
   };
 })();

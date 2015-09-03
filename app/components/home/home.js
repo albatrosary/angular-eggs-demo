@@ -1,14 +1,13 @@
 /**
+ * Home Components module.
  *
- *
- * @deprecated
- * @module components/home
+ * @module Sample.components.home
  */
 (function () {
   'use strict';
 
   angular
-    .module('demo.home', [])
+    .module('Sample.components.home', [])
     .controller('HomeController', HomeController);
 
   HomeController.$inject = [];
@@ -24,14 +23,13 @@
   }
 
   /**
-   * Public method, assigned to prototype
+   * The controller activate makes it convenient to re-use the logic
+   * for a refresh for the controller/View, keeps the logic together.
+   *
+   * @method activate
    */
+  HomeController.prototype.activate = function() {
+    console.log('HomeController activate Method');
+  };
 
-  /**
-   * Private property
-   */
-
-  /**
-   * Private function
-   */
 })();

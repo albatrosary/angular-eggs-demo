@@ -16,12 +16,6 @@
           '{,*/}*.html',
           'styles/fonts/{,*/}*.*'
         ]
-      }, {
-        expand: true,
-        dot: true,
-        cwd: '.',
-        src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
-        dest: '<%= paths.dist %>'
       }]
     }
   };
