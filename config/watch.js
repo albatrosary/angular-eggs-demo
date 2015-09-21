@@ -26,10 +26,6 @@
     gruntfile: {
       files: ['Gruntfile.js']
     },
-    sass: {
-      files: ['<%= paths.app %>/styles/{,*/}*.{scss,sass}'],
-      tasks: ['sass:server', 'autoprefixer']
-    },
     styles: {
       files: ['<%= paths.app %>/styles/{,*/}*.css'],
       tasks: ['newer:copy:styles', 'autoprefixer']
