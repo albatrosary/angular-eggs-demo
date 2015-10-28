@@ -22,6 +22,10 @@
           }
         }
       }
+    },
+    sass: {
+      src: ['<%= paths.app %>/styles/{,*/}*.{scss,sass}'],
+      ignorePath: /(\.\.\/){1,2}bower_components\//
     }
   };
 })();
