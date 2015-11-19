@@ -22,11 +22,11 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     jshintrc: {
       app: grunt.file.readJSON('.jshintrc')
-    } 
+    }
   };
 
   var configs = require('load-grunt-configs')(grunt, options);
-  
+
   // Define the configuration for all the tasks
   grunt.initConfig(configs);
 
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
     }
     if (target === 'dist') {
       return grunt.task.run([
-      'build', 
+      'build',
       'express:dev',
       'browserSync:dist']);
     }
@@ -45,6 +45,7 @@ module.exports = function (grunt) {
       'clean:server',
       'injector',
       'wiredep',
+      'typescript',
       'jshint',
       'jscs',
       'concurrent:server',
@@ -127,7 +128,7 @@ module.exports = function (grunt) {
   grunt.registerTask('metric', function (target) {
     if (target === 'test') {
       return grunt.task.run([
-      'plato:test', 
+      'plato:test',
       'browserSync:metricTest'
       ]);
     }
