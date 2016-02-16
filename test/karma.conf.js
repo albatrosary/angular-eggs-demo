@@ -17,9 +17,7 @@ module.exports = function(config) {
     files: [
       // bower:js
       'bower_components/jquery/dist/jquery.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/angular/angular.js',
-      'bower_components/angular-new-router/dist/router.es5.js',
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
@@ -37,7 +35,8 @@ module.exports = function(config) {
       'test/service/gruntfiles/gruntfiles.spec.js',
       // endinjector
       'app/scripts/main.js',
-      'test/main.spec.js'
+      'test/main.spec.js',
+      'app/**/*.html'
     ],
 
     // list of files to exclude
@@ -47,7 +46,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'app/**/*.html': ['ng-html2js'],
       'app/**/*.js': ['coverage']
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'app/',
+      moduleName: 'templates'
     },
 
     coverageReporter: {
@@ -76,7 +81,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS2'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

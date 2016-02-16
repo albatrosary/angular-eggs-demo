@@ -8,7 +8,7 @@
 
   angular
     .module('Sample', [
-      'ngNewRouter',
+      'ngComponentRouter',
       'Sample.config',
       'Sample.components.home',
       'Sample.components.about',
@@ -16,14 +16,7 @@
     ])
     .controller('AppController', AppController);
 
-  AppController.$routeConfig = [
-    {path: '/',       redirectTo: '/home'},
-    {path: '/home',    component: 'home'},
-    {path: '/about',   component: 'about'},
-    {path: '/contact', component: 'contact'}
-  ];
-
-  AppController.$inject = [];
+  AppController.$inject = ['$router'];
 
   /**
    * AppController
@@ -32,5 +25,24 @@
    * @main Sample
    * @constructor
    */
-  function AppController () {}
+  function AppController ($router) {
+    $router.config([
+      {
+        path: '/home',
+        name:'Home',
+        component: 'home',
+        useAsDefault: true
+      },
+      {
+        path: '/about',
+        name:'About',
+        component: 'about'
+      },
+      {
+        path: '/contact',
+        name:'Contact',
+        component: 'contact'
+      }
+    ]);
+  }
 })();

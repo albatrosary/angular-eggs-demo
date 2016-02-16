@@ -3,10 +3,7 @@
 
   module.exports = {
     options: {
-      browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1'],
-      map: {
-        prev: '.tmp/styles/'
-      }
+      browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
     },
     dist: {
       files: [{

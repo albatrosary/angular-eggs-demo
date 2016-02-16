@@ -8,60 +8,35 @@
 
   angular
     .module('Sample.components.home', [])
-    .controller('HomeController', HomeController);
+    .component('home', {
+      controller: Controller,
+      templateUrl: 'components/home/home.html',
+      $canActivate: $canActivate
+    });
 
-  HomeController.$inject = [];
+  Controller.$inject = [];
+
+  var ctrl;
 
   /**
-   * HomeController
+   * Controller
    *
-   * @class HomeController
+   * @class Controller
    * @constructor
    */
-  function HomeController() {
-    console.log('HomeController Constructor');
+  function Controller() {
+    console.log('Home Controller Constructor');
+    ctrl = this;
+    ctrl.name = 'Home';
   }
 
-  /**
-   * The controller canActivate makes it convenient to re-use the logic
-   * for a refresh for the controller/View, keeps the logic together.
-   *
-   * @method canActivate
-   */
-  HomeController.prototype.canActivate = function() {
-    console.log('HomeController canActivate Method');
+  function $canActivate() {
+    console.log('Home Controller $canActivate');
     return true;
-  };
+  }
 
-  /**
-   * The controller activate makes it convenient to re-use the logic
-   * for a refresh for the controller/View, keeps the logic together.
-   *
-   * @method activate
-   */
-  HomeController.prototype.activate = function() {
-    console.log('HomeController activate Method');
+  Controller.prototype.$onInit = function() {
+    console.log('Home Controller $onInit');
+    ctrl.onInit = 'Success';
   };
-
-  /**
-   * The controller canDeactivate makes it convenient to re-use the logic
-   * for a refresh for the controller/View, keeps the logic together.
-   *
-   * @method canDeactivate
-   */
-  HomeController.prototype.canDeactivate = function() {
-    console.log('HomeController canDeactivate Method');
-    return true;
-  };
-
-  /**
-   * The controller deactivate makes it convenient to re-use the logic
-   * for a refresh for the controller/View, keeps the logic together.
-   *
-   * @method deactivate
-   */
-  HomeController.prototype.deactivate = function() {
-    console.log('HomeController deactivate Method');
-  };
-
 })();

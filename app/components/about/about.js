@@ -10,9 +10,13 @@
     .module('Sample.components.about', [
       'Sample.service.gruntfiles'
     ])
-    .controller('AboutController', AboutController);
+    .component('about', {
+      controller: Controller,
+      templateUrl: 'components/about/about.html',
+      $canActivate: $canActivate
+    });
 
-  AboutController.$inject = ['GruntfilesService'];
+  Controller.$inject = ['GruntfilesService'];
 
   /**
    * AboutController
@@ -20,10 +24,11 @@
    * @class AboutController
    * @constructor
    */
-  function AboutController(GruntfilesService) {
-    console.log('AboutController Constructor');
-
-    this.GruntfilesService = GruntfilesService;
+  function Controller(GruntfilesService) {
+    console.log('About Controller Constructor');
+    ctrl = this;
+    ctrl.name = 'About';
+    ctrl.GruntfilesService = GruntfilesService;
   }
 
   /**
@@ -32,21 +37,20 @@
    *
    * @method canActivate
    */
-  AboutController.prototype.canActivate = function() {
-    console.log('AboutController canActivate Method');
+  function $canActivate () {
+    console.log('About Controller canActivate Method');
     return true;
-  };
+  }
 
   /**
    * The controller activate makes it convenient to re-use the logic
    * for a refresh for the controller/View, keeps the logic together.
    *
-   * @method activate
+   * @method $onInit
    */
-  AboutController.prototype.activate = function() {
-    console.log('AboutController activate Method');
-
-    vm = this;
+  Controller.prototype.$onInit = function() {
+    console.log('About Controller $onInit');
+    ctrl.onInit = 'Success';
     var grunt = this.GruntfilesService.query().$promise;
     grunt
       .then(setlist)
@@ -54,33 +58,12 @@
   };
 
   /**
-   * The controller canDeactivate makes it convenient to re-use the logic
-   * for a refresh for the controller/View, keeps the logic together.
-   *
-   * @method canDeactivate
-   */
-  AboutController.prototype.canDeactivate = function() {
-    console.log('AboutController canDeactivate Method');
-    return true;
-  };
-
-  /**
-   * The controller deactivate makes it convenient to re-use the logic
-   * for a refresh for the controller/View, keeps the logic together.
-   *
-   * @method deactivate
-   */
-  AboutController.prototype.deactivate = function() {
-    console.log('AboutController deactivate Method');
-  };
-
-  /**
    * Angular ViewModel
    *
-   * @property vm
+   * @property ctrl
    * @private
    */
-  var vm;
+  var ctrl;
 
   /**
    * Setting the retrieved Gruntfile list to ViewModel
@@ -90,7 +73,7 @@
    * @private
    */
   var setlist = function (list) {
-    vm.list = list;
+    ctrl.list = list;
   };
 
   /**
@@ -101,6 +84,6 @@
    * @private
    */
   var error = function (e) {
-    vm.error = e;
+    ctrl.error = e;
   };
 })();
