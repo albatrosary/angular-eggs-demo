@@ -17,13 +17,6 @@
           'styles/fonts/{,*/}*.*'
         ]
       }]
-    },
-    styles: {
-      expand: true,
-      dot: true,
-      cwd: '<%= paths.app %>/styles',
-      dest: '.tmp/styles/',
-      src: '{,*/}*.css'
     }
   };
 })();

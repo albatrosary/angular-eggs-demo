@@ -3,13 +3,11 @@
 
   module.exports = {
     server: [
-      'copy:styles'
+      'sass:server'
     ],
-    test: [
-      'copy:styles'
-    ],
+    test: [],
     dist: [
-      'copy:styles',
+      'sass',
       'imagemin',
       'svgmin'
     ]
